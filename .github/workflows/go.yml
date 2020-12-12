@@ -24,6 +24,7 @@ jobs:
     - name: Get dependencies
       run: |
         go get -v -t -d ./...
+        go get -u github.com/jstemmer/go-junit-report
         if [ -f Gopkg.toml ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
@@ -33,4 +34,13 @@ jobs:
       run: go build -v ./...
 
     - name: Test
-      run: go test -v ./...
+      run: | 
+        go test -v 2>&1 | go-junit-report > report.xml
+    # go test -v -bench . -count 5 2>&1 | go-junit-report > report.xml
+
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1.6
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        files: test-results/**/*.xml
