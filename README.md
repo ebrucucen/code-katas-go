@@ -1,6 +1,8 @@
 # A starter project for doing katas in Go lang
 
 
+![GoBreakout](https://github.com/ebrucucen/code-katas-go/workflows/GoBreakout/badge.svg?branch=breakoutroom1)
+
 
 # Errors
 
