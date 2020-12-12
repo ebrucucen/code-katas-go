@@ -2,9 +2,9 @@ name: GoBreakout
 
 on:
   push:
-    branches: [ main ]
+    branches: [ breakoutroom1 ]
   pull_request:
-    branches: [ main ]
+    branches: [ breakoutroom1 ]
 
 jobs:
 
