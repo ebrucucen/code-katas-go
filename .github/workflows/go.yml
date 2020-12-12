@@ -40,7 +40,7 @@ jobs:
 
     - name: Test Benchmark
       run: | 
-        go test -v -bench -run=XXX . -count 5 2>&1 | go-junit-report > benchmark_report.xml
+        go test -v -bench -run=XXX . -count 5 2>&1 | go-junit-report > ./test-results/benchmark_report.xml
 
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1.6
